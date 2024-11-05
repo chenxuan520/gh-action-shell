@@ -7,7 +7,7 @@ if ! [ -d ".git" ]; then
 fi
 
 # 尝试获取上一个tag的commit hash（或者就是当前HEAD，如果它是一个tag）
-last_tag_commit=$(git describe --tags --abbrev=0 HEAD 2>/dev/null)
+last_tag_commit=$(git tag --sort=-creatordate | head -n 2 | tail -n 1 )
 
 # 获取commit message
 if [ -n "$last_tag_commit" ]; then
